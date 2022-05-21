@@ -6,6 +6,11 @@ function App() {
   const [xValue, setXValue] = useState([]);
   const [yValue, setYValue] = useState([]);
 
+  const [value, setValue] = useState("");
+
+  const generateSymbol = () => {
+    setValue(value);
+  };
   const apiCall = async () => {
     let API_KEY = "81WVUHQDVUVSZDYO";
     const symbol = "AMZN";
@@ -45,6 +50,18 @@ function App() {
         ]}
         layout={{ width: 720, height: 440, title: "A Fancy Plot" }}
       />
+      <fieldset>
+        <legend>
+          Enter the symbol <span>(ex: for amazon AMZN , facebook: FB)</span>{" "}
+        </legend>
+        <input
+          type="text"
+          placeholder="symbol"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <button onClick={generateSymbol}>Ok</button>
+      </fieldset>
     </div>
   );
 }
